@@ -1,25 +1,60 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="App">      
+        <div className="formulaire">
+        <form onSubmit={this.addItem}>
+            <table  class="table">
+              <tr>
+                <td>
+                  Nom <input type="text"></input>
+                </td>
+                <td>
+                  Prénom <input type="text"></input>
+                </td>
+                <td>
+                  <button type="submit" class="btn btn-success">Ajouter</button>
+                </td>
+              </tr>
+            </table>
+            </form>
+        </div>
+
+        <div className="formulaire">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td><input type="button" value="X" class="btn btn-danger"></input></td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td><input type="button" value="X" class="btn btn-danger"></input></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>July</td>
+                <td>Dooley</td>
+                <td><input type="button" value="X" class="btn btn-danger"></input></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
