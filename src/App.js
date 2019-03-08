@@ -1,63 +1,61 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import Affichage from './components/Affichage';
+import Formulaire from './components/Formulaire';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">      
-        <div className="formulaire">
-        <form onSubmit={this.addItem}>
-            <table  class="table">
-              <tr>
-                <td>
-                  Nom <input type="text"></input>
-                </td>
-                <td>
-                  Prénom <input type="text"></input>
-                </td>
-                <td>
-                  <button type="submit" class="btn btn-success">Ajouter</button>
-                </td>
-              </tr>
-            </table>
-            </form>
-        </div>
+const App = () => {
+  const usersData = []
 
-        <div className="formulaire">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>0</td>
-                <td>John</td>
-                <td>Doe</td>
-                <td><input type="button" value="X" class="btn btn-danger"></input></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td><input type="button" value="X" class="btn btn-danger"></input></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>July</td>
-                <td>Dooley</td>
-                <td><input type="button" value="X" class="btn btn-danger"></input></td>
-              </tr>
-            </tbody>
-          </table>
+  const [users, setUsers] = useState(usersData)
+  
+  const addUser = user => {
+    user.id = users.length + 1
+    //user.bouton = buton(prop);
+		setUsers([ ...users, user ])
+  }
+  
+  const deleteUser = id => {
+    setUsers(users.filter(user => user.id !== id))
+  }
+/*
+function buton(prop){
+    return <button  onClick={
+        confirmAlert({
+            message: 'Confirmer la suppression',
+            buttons: [
+              {
+                label: 'Oui',
+                onClick: () => prop.deleteUser(user.id)
+              },
+              {
+                label: 'Non',
+                onClick: () => ''
+              }
+            ]
+          })
+    } 
+    className="btn btn-danger">X
+    </button>;
+}*/
+  
+  
+  return (
+    <div className="container">
+      <div className="App">
+        <div className="row">    
+          <div className="col-md-8">
+            <Formulaire addUser={addUser}/>
+          </div>
+          <div className="col-md-4"></div>         
+        </div>
+        <div className="flex-large">         
+            <Affichage users={users} deleteUser={deleteUser}/>
         </div>
       </div>
-    );
-  }
+     </div>
+  );
 }
+
+ 
 
 export default App;
