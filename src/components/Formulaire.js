@@ -1,5 +1,3 @@
-import './Formulaire.css';
-
 import React, { useState } from 'react'
 
 const Formulaire = props => {
